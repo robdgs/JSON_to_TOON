@@ -6,10 +6,24 @@ export default function Home() {
   const [jsonInput, setJsonInput] = useState("");
   const [toonOutput, setToonOutput] = useState("");
   const [error, setError] = useState("");
+  const [copied, setCopied] = useState(false);
+
+  const copyToClipboard = async () => {
+    if (!toonOutput) return;
+    
+    try {
+      await navigator.clipboard.writeText(toonOutput);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
 
   const convertToToon = () => {
     setError("");
     setToonOutput("");
+    setCopied(false);
 
     try {
       // Validate JSON
@@ -182,7 +196,18 @@ export default function Home() {
           <div className="border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
             <div className="border-b-2 border-black bg-[#e0e0e0] px-3 py-1.5 flex items-center justify-between">
               <span className="font-bold text-sm text-black">OUTPUT.toon</span>
-              <span className="text-xs text-black/60">READONLY</span>
+              <div className="flex items-center gap-2">
+                {toonOutput && (
+                  <button
+                    onClick={copyToClipboard}
+                    className="px-2 py-1 border border-black bg-white text-black text-xs font-bold hover:bg-black hover:text-white transition-colors"
+                    title="Copy to clipboard"
+                  >
+                    {copied ? "✓ COPIED" : "COPY"}
+                  </button>
+                )}
+                <span className="text-xs text-black/60">READONLY</span>
+              </div>
             </div>
             <div className="p-3">
               <textarea
