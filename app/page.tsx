@@ -25,29 +25,96 @@ export default function Home() {
   };
 
   const convertJsonToToon = (json: any): string => {
-    // Basic implementation - customize according to your needs
-    let toon = "";
-
-    const convertValue = (value: any, indent: number = 0): string => {
+    // TOON format: Text Object Oriented Notation
+    // More readable and token-efficient than JSON
+    
+    const convertValue = (value: any, indent: number = 0, key: string = ""): string => {
       const spaces = "  ".repeat(indent);
 
-      if (typeof value === "object" && value !== null) {
-        if (Array.isArray(value)) {
-          return value.map((item) => convertValue(item, indent)).join("\n");
+      // Null values
+      if (value === null) {
+        return "null";
+      }
+
+      // Primitive types
+      if (typeof value === "string") {
+        // No quotes needed for ISO dates and simple strings
+        if (value.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/) || 
+            (!value.includes("\n") && !value.includes("#") && !value.includes("  "))) {
+          return value;
+        }
+        return `"${value}"`;
+      }
+
+      if (typeof value === "number" || typeof value === "boolean") {
+        return String(value);
+      }
+
+      // Arrays
+      if (Array.isArray(value)) {
+        if (value.length === 0) {
+          return "items[0]:";
+        }
+        
+        // Check if array contains objects
+        const firstItem = value[0];
+        if (typeof firstItem === "object" && firstItem !== null && !Array.isArray(firstItem)) {
+          // Array of objects - get all unique keys
+          const allKeys = new Set<string>();
+          value.forEach(item => {
+            if (typeof item === "object" && item !== null) {
+              Object.keys(item).forEach(k => allKeys.add(k));
+            }
+          });
+          const keys = Array.from(allKeys);
+          
+          const header = `items[${value.length}]{${keys.join(",")}}:`;
+          const items = value.map(item => {
+            const vals = keys.map(k => {
+              const v = item[k];
+              return v !== undefined ? String(v) : "";
+            });
+            return `${spaces}  ${vals.join(",")}`;
+          }).join("\n");
+          
+          return `${header}\n${items}`;
         } else {
-          return Object.entries(value)
-            .map(
-              ([key, val]) =>
-                `${spaces}${key}: ${convertValue(val, indent + 1)}`,
-            )
-            .join("\n");
+          // Array of primitives
+          const header = `items[${value.length}]:`;
+          const items = value.map(item => 
+            `${spaces}  - ${convertValue(item, 0)}`
+          ).join("\n");
+          return `${header}\n${items}`;
         }
       }
+
+      // Objects
+      if (typeof value === "object") {
+        const entries = Object.entries(value);
+        
+        if (entries.length === 0) {
+          return "{}";
+        }
+
+        return entries
+          .map(([key, val]) => {
+            if (Array.isArray(val)) {
+              const arrayFormat = convertValue(val, indent + 1, key);
+              return `${spaces}${key}: ${arrayFormat}`;
+            } else if (typeof val === "object" && val !== null) {
+              const objectContent = convertValue(val, indent + 1);
+              return `${spaces}${key}:\n${objectContent}`;
+            } else {
+              return `${spaces}${key}: ${convertValue(val, 0)}`;
+            }
+          })
+          .join("\n");
+      }
+
       return String(value);
     };
 
-    toon = convertValue(json);
-    return toon;
+    return convertValue(json, 0);
   };
 
   return (
