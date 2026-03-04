@@ -27,8 +27,12 @@ export default function Home() {
   const convertJsonToToon = (json: any): string => {
     // TOON format: Text Object Oriented Notation
     // More readable and token-efficient than JSON
-    
-    const convertValue = (value: any, indent: number = 0, key: string = ""): string => {
+
+    const convertValue = (
+      value: any,
+      indent: number = 0,
+      key: string = "",
+    ): string => {
       const spaces = "  ".repeat(indent);
 
       // Null values
@@ -39,8 +43,12 @@ export default function Home() {
       // Primitive types
       if (typeof value === "string") {
         // No quotes needed for ISO dates and simple strings
-        if (value.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/) || 
-            (!value.includes("\n") && !value.includes("#") && !value.includes("  "))) {
+        if (
+          value.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/) ||
+          (!value.includes("\n") &&
+            !value.includes("#") &&
+            !value.includes("  "))
+        ) {
           return value;
         }
         return `"${value}"`;
@@ -55,35 +63,41 @@ export default function Home() {
         if (value.length === 0) {
           return "items[0]:";
         }
-        
+
         // Check if array contains objects
         const firstItem = value[0];
-        if (typeof firstItem === "object" && firstItem !== null && !Array.isArray(firstItem)) {
+        if (
+          typeof firstItem === "object" &&
+          firstItem !== null &&
+          !Array.isArray(firstItem)
+        ) {
           // Array of objects - get all unique keys
           const allKeys = new Set<string>();
-          value.forEach(item => {
+          value.forEach((item) => {
             if (typeof item === "object" && item !== null) {
-              Object.keys(item).forEach(k => allKeys.add(k));
+              Object.keys(item).forEach((k) => allKeys.add(k));
             }
           });
           const keys = Array.from(allKeys);
-          
+
           const header = `items[${value.length}]{${keys.join(",")}}:`;
-          const items = value.map(item => {
-            const vals = keys.map(k => {
-              const v = item[k];
-              return v !== undefined ? String(v) : "";
-            });
-            return `${spaces}  ${vals.join(",")}`;
-          }).join("\n");
-          
+          const items = value
+            .map((item) => {
+              const vals = keys.map((k) => {
+                const v = item[k];
+                return v !== undefined ? String(v) : "";
+              });
+              return `${spaces}  ${vals.join(",")}`;
+            })
+            .join("\n");
+
           return `${header}\n${items}`;
         } else {
           // Array of primitives
           const header = `items[${value.length}]:`;
-          const items = value.map(item => 
-            `${spaces}  - ${convertValue(item, 0)}`
-          ).join("\n");
+          const items = value
+            .map((item) => `${spaces}  - ${convertValue(item, 0)}`)
+            .join("\n");
           return `${header}\n${items}`;
         }
       }
@@ -91,7 +105,7 @@ export default function Home() {
       // Objects
       if (typeof value === "object") {
         const entries = Object.entries(value);
-        
+
         if (entries.length === 0) {
           return "{}";
         }
