@@ -1,75 +1,75 @@
 # JSON to TOON Converter
 
-Un'applicazione web moderna per convertire dati JSON in formato TOON, con un'interfaccia stile terminale vintage.
+A modern web application to convert JSON data into TOON format, with a vintage terminal-style interface.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16.1.6-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-38bdf8?style=flat-square&logo=tailwind-css)
 
-## 📋 Descrizione
+## 📋 Description
 
-JSON to TOON Converter è un'applicazione web sviluppata con Next.js che permette di convertire facilmente file JSON in formato TOON. L'interfaccia è progettata con uno stile brutalist/terminale vintage che combina estetica retro e funzionalità moderna.
+JSON to TOON Converter is a web application built with Next.js that allows you to easily convert JSON files into TOON format. The interface is designed with a brutalist/vintage terminal style that combines retro aesthetics with modern functionality.
 
-### Caratteristiche Principali
+### Key Features
 
-- ✨ **Interfaccia Terminale**: Design brutalist con bordi quadrati, ombre solide e font monospace
-- 🎨 **Palette Light**: Background beige chiaro con contrasti netti in nero
-- ⚡ **Conversione in Tempo Reale**: Validazione JSON e conversione istantanea
-- 🔍 **Gestione Errori**: Messaggi di errore chiari e dettagliati per JSON non validi
-- 📱 **Responsive Design**: Ottimizzato per desktop e dispositivi mobili
-- 🎯 **TypeScript**: Tipizzazione statica per maggiore affidabilità del codice
+- ✨ **Terminal Interface**: Brutalist design with square borders, solid shadows, and monospace font
+- 🎨 **Light Palette**: Light beige background with sharp black contrasts
+- ⚡ **Real-time Conversion**: JSON validation and instant conversion
+- 🔍 **Error Handling**: Clear and detailed error messages for invalid JSON
+- 📱 **Responsive Design**: Optimized for desktop and mobile devices
+- 🎯 **TypeScript**: Static typing for greater code reliability
 
 ## 🚀 Getting Started
 
-### Prerequisiti
+### Prerequisites
 
-- Node.js 18.x o superiore
-- npm, yarn, pnpm o bun
+- Node.js 18.x or higher
+- npm, yarn, pnpm, or bun
 
-### Installazione
+### Installation
 
-1. Clona il repository:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/robdgs/JSON-_to_TOON.git
 cd json_to_toon
 ```
 
-2. Installa le dipendenze:
+2. Install dependencies:
 
 ```bash
 npm install
-# oppure
+# or
 yarn install
-# oppure
+# or
 pnpm install
 ```
 
-3. Avvia il server di sviluppo:
+3. Start the development server:
 
 ```bash
 npm run dev
-# oppure
+# or
 yarn dev
-# oppure
+# or
 pnpm dev
 ```
 
-4. Apri [http://localhost:3000](http://localhost:3000) nel browser
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## 🎯 Come Usare
+## 🎯 How to Use
 
-1. **Inserisci il JSON**: Scrivi o incolla il tuo JSON valido nel campo `INPUT.json` sulla sinistra
-2. **Converti**: Clicca sul pulsante `[ CONVERT ]`
-3. **Visualizza**: Il risultato in formato TOON apparirà nel campo `OUTPUT.toon` sulla destra
+1. **Enter JSON**: Write or paste your valid JSON in the `INPUT.json` field on the left
+2. **Convert**: Click the `[ CONVERT ]` button
+3. **View**: The TOON format result will appear in the `OUTPUT.toon` field on the right
 
-### Esempio
+### Example
 
 **Input JSON:**
 
 ```json
 {
-  "name": "Mario Rossi",
+  "name": "John Doe",
   "age": 30,
   "skills": ["JavaScript", "TypeScript", "React"]
 }
@@ -78,107 +78,107 @@ pnpm dev
 **Output TOON:**
 
 ```
-name: Mario Rossi
+name: John Doe
 age: 30
 skills: JavaScript
 TypeScript
 React
 ```
 
-## 🛠️ Tecnologie Utilizzate
+## 🛠️ Technologies Used
 
-- **[Next.js 16.1.6](https://nextjs.org/)** - Framework React per applicazioni web
-- **[React 19](https://react.dev/)** - Libreria UI
-- **[TypeScript](https://www.typescriptlang.org/)** - Superset tipizzato di JavaScript
-- **[Tailwind CSS](https://tailwindcss.com/)** - Framework CSS utility-first
-- **[ESLint](https://eslint.org/)** - Linter per JavaScript/TypeScript
+- **[Next.js 16.1.6](https://nextjs.org/)** - React framework for web applications
+- **[React 19](https://react.dev/)** - UI library
+- **[TypeScript](https://www.typescriptlang.org/)** - Typed superset of JavaScript
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[ESLint](https://eslint.org/)** - Linter for JavaScript/TypeScript
 
-## 📁 Struttura del Progetto
+## 📁 Project Structure
 
 ```
 json_to_toon/
 ├── app/
-│   ├── page.tsx          # Pagina principale con logica di conversione
-│   ├── layout.tsx        # Layout root dell'applicazione
-│   ├── globals.css       # Stili globali e Tailwind
+│   ├── page.tsx          # Main page with conversion logic
+│   ├── layout.tsx        # Root application layout
+│   ├── globals.css       # Global styles and Tailwind
 │   └── favicon.ico       # Favicon
-├── public/               # Asset statici
-├── .next/               # Build output (generato)
-├── node_modules/        # Dipendenze (generato)
-├── package.json         # Configurazione npm e dipendenze
-├── tsconfig.json        # Configurazione TypeScript
-├── tailwind.config.ts   # Configurazione Tailwind CSS
-├── next.config.ts       # Configurazione Next.js
-└── README.md           # Questo file
+├── public/               # Static assets
+├── .next/               # Build output (generated)
+├── node_modules/        # Dependencies (generated)
+├── package.json         # npm configuration and dependencies
+├── tsconfig.json        # TypeScript configuration
+├── tailwind.config.ts   # Tailwind CSS configuration
+├── next.config.ts       # Next.js configuration
+└── README.md           # This file
 ```
 
-## 🎨 Personalizzazione
+## 🎨 Customization
 
-### Modificare la Logica di Conversione
+### Modify Conversion Logic
 
-La funzione di conversione si trova in `app/page.tsx`. Per personalizzare il formato TOON:
+The conversion function is located in `app/page.tsx`. To customize the TOON format:
 
 ```typescript
 const convertJsonToToon = (json: any): string => {
-  // Implementa qui la tua logica personalizzata
+  // Implement your custom logic here
   // ...
 };
 ```
 
-### Modificare lo Stile
+### Modify Styling
 
-Gli stili sono gestiti tramite Tailwind CSS. Per modificare i colori o l'aspetto:
+Styles are managed via Tailwind CSS. To modify colors or appearance:
 
-1. Modifica le classi Tailwind direttamente in `app/page.tsx`
-2. Personalizza la configurazione in `tailwind.config.ts`
-3. Aggiungi stili custom in `app/globals.css`
+1. Edit Tailwind classes directly in `app/page.tsx`
+2. Customize the configuration in `tailwind.config.ts`
+3. Add custom styles in `app/globals.css`
 
-## 🧪 Build e Deploy
+## 🧪 Build and Deploy
 
-### Build di Produzione
+### Production Build
 
 ```bash
 npm run build
 npm run start
 ```
 
-### Deploy su Vercel
+### Deploy on Vercel
 
-Il modo più semplice per deployare l'app è utilizzare [Vercel](https://vercel.com):
+The easiest way to deploy your app is to use [Vercel](https://vercel.com):
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/robdgs/JSON-_to_TOON)
 
-Oppure tramite CLI:
+Or via CLI:
 
 ```bash
 npm install -g vercel
 vercel
 ```
 
-### Deploy Manuale
+### Manual Deploy
 
-L'applicazione può essere deployata su qualsiasi piattaforma che supporta Node.js:
+The application can be deployed on any platform that supports Node.js:
 
-- **Netlify**: Configura il build command come `npm run build`
-- **Railway**: Connetti il repository e deploy automatico
-- **AWS/Google Cloud/Azure**: Usa container Docker o servizi serverless
+- **Netlify**: Set the build command to `npm run build`
+- **Railway**: Connect the repository for automatic deployment
+- **AWS/Google Cloud/Azure**: Use Docker containers or serverless services
 
-## 📝 Script Disponibili
+## 📝 Available Scripts
 
-- `npm run dev` - Avvia il server di sviluppo con hot reload
-- `npm run build` - Crea la build di produzione ottimizzata
-- `npm run start` - Avvia il server di produzione
-- `npm run lint` - Esegue ESLint per controllare il codice
+- `npm run dev` - Start the development server with hot reload
+- `npm run build` - Create an optimized production build
+- `npm run start` - Start the production server
+- `npm run lint` - Run ESLint to check the code
 
 ## 🐛 Troubleshooting
 
-### Errore: "JSON non valido"
+### Error: "Invalid JSON"
 
-Assicurati che il JSON inserito sia formattato correttamente. Usa strumenti come [JSONLint](https://jsonlint.com/) per validarlo.
+Make sure the JSON you entered is properly formatted. Use tools like [JSONLint](https://jsonlint.com/) to validate it.
 
-### Problemi di Build
+### Build Issues
 
-Se riscontri errori durante il build:
+If you encounter errors during build:
 
 ```bash
 rm -rf .next node_modules
@@ -186,33 +186,33 @@ npm install
 npm run build
 ```
 
-## 🤝 Contribuire
+## 🤝 Contributing
 
-I contributi sono benvenuti! Per contribuire:
+Contributions are welcome! To contribute:
 
-1. Fai un fork del progetto
-2. Crea un branch per la tua feature (`git checkout -b feature/AmazingFeature`)
-3. Committa le modifiche (`git commit -m 'Add some AmazingFeature'`)
-4. Pusha sul branch (`git push origin feature/AmazingFeature`)
-5. Apri una Pull Request
+1. Fork the project
+2. Create a branch for your feature (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📄 Licenza
+## 📄 License
 
-Questo progetto è distribuito sotto licenza MIT. Vedi il file `LICENSE` per maggiori dettagli.
+This project is distributed under the MIT license. See the `LICENSE` file for more details.
 
-## 👤 Autore
+## 👤 Author
 
 **robdgs**
 
 - GitHub: [@robdgs](https://github.com/robdgs)
 - Repository: [JSON-\_to_TOON](https://github.com/robdgs/JSON-_to_TOON)
 
-## 🙏 Ringraziamenti
+## 🙏 Acknowledgments
 
-- Design ispirato all'estetica brutalist e ai terminali vintage
-- Costruito con [Next.js](https://nextjs.org/)
+- Design inspired by brutalist aesthetics and vintage terminals
+- Built with [Next.js](https://nextjs.org/)
 - Powered by [Vercel](https://vercel.com/)
 
 ---
 
-⭐ Se questo progetto ti è stato utile, considera di mettere una stella su GitHub!
+⭐ If this project was useful to you, consider starring it on GitHub!
