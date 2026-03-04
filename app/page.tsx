@@ -10,7 +10,7 @@ export default function Home() {
 
   const copyToClipboard = async () => {
     if (!toonOutput) return;
-    
+
     try {
       await navigator.clipboard.writeText(toonOutput);
       setCopied(true);
