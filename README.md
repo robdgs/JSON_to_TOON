@@ -80,9 +80,10 @@ pnpm dev
 ```
 name: John Doe
 age: 30
-skills: JavaScript
-TypeScript
-React
+skills: items[3]:
+    - JavaScript
+    - TypeScript
+    - React
 ```
 
 ## 🛠️ Technologies Used
